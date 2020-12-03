@@ -1,0 +1,7 @@
+<nav class="navbar navbar-expand-lg">
+    <span class="navbar-brand versalita negrita text-white">{{titulo}}</span>
+    <button class="navbar-toggler" type="button">
+        <fa-icon [icon]="['fas','sign-in-alt']" [styles]="{'stroke': 'white', 'color': 'white'}" (click)="entrar()"></fa-icon>
+    </button>
+</nav>
+<app-login *ngIf="inFlag"></app-login>

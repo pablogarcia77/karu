@@ -1,0 +1,24 @@
+<div class="container mt-4">
+    <div *ngFor="let categoria of categorias">
+        <div class="categoria">{{categoria.nombre}}</div>
+        <div *ngFor="let producto of productos">
+            <div class="container productos no-gutters" *ngIf="producto.categoria == categoria.id_categoria">
+                <div class="oferta">
+                    <fa-icon *ngIf="producto.oferta == 1" [icon]="['fas','certificate']" [styles]="{'stroke': 'white', 'color': 'red'}" size="s"></fa-icon>
+                </div>
+                <div class="col-5  ml-auto productoNombre">
+                    <div class="nombreProducto">{{producto.nombre}}</div>
+                    <input class="form-control" type="text" name="nombre" id="nombre" value="{{producto.nombre}}" [disabled]="producto.id_producto"/>
+                    <div class="descripcion">{{producto.descripcion}}</div>
+                </div>
+                <div class="col-6">
+                    <div class="text-center nombreProducto precioProducto">${{producto.precio}},00</div>
+                </div>
+                <fa-icon class="col-1 ml-auto align-right text-right" [icon]="['fas','edit']" (click)="editar(producto)"></fa-icon>
+            </div>
+            <div class="linea" *ngIf="producto.categoria == categoria.id_categoria"></div>
+        </div>
+        <br>
+        <div class="dropdown-divider"></div>
+    </div>
+</div>

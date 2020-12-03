@@ -1,0 +1,67 @@
+<div class="carrito">
+    <div (click)="cart()">
+        <fa-icon [icon]="['fas','hamburger']" size="1x" class="plato"></fa-icon>
+        <fa-icon [icon]="['fas','hand-holding']" size="2x" class="mano"></fa-icon>
+        <span class="badge" *ngIf="cantidadTotal != 0">{{cantidadTotal}}</span>
+    </div>
+</div>
+<div class="container" *ngIf="openCart">
+    <!-- <div *ngIf="openCart">hola</div> -->
+    <div class="shopping-cart">
+        <div class="shopping-cart-header">
+            <fa-icon [icon]="['fas','shopping-cart']" size="lg"></fa-icon><span class="badge2">{{cantidadTotal}}</span>
+            <div class="shopping-cart-total">
+                <span class="font-weight-bold">Total: </span>
+                <span class="text-success font-weight-bold">${{precioTotal}},00</span>
+            </div>
+        </div>
+        <!--end shopping-cart-header -->
+        <div class="scroll">
+            <ul class="shopping-cart-items">
+                <li class="clearfix" *ngFor="let item of items">
+                    <div class="row">
+                        <div class="col-6">
+                            <span class="item-name">{{item.nombre}}</span>
+                            <span class="item-price text-success font-weight-bold">${{item.precio}},00 c/u</span>
+                            <span class="item-quantity float-left">Cantidad: {{item.cantidad}}</span>
+                        </div>
+                        <div class="col-4">
+                            <div class="row no-gutters">
+                            <div class="col-6">
+                                <fa-icon [icon]="['fas','plus-square']" (click)="addCart(item)"></fa-icon>
+                            </div>
+                            <div class="col-6">
+                                <fa-icon [icon]="['fas','minus-square']" (click)="removeOne(item)"></fa-icon>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-2">
+                            <fa-icon (click)="remove(item)" [icon]="['fas','window-close']" [styles]="{'stroke':'red','color':'red'}" size="lg"></fa-icon>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="row" *ngIf="!aviso">
+            <div class="col-6 text-wrap text-uppercase font-weight-bold text-muted">
+                <p>Numero de mesa: </p>
+            </div>
+            <div class="col-6">
+                <input type="number" #mesa class="form-control" name="mesa" (keyup.enter)="mandarMesa(mesa.value)" (blur)="mandarMesa(mesa.value)"/>
+            </div>
+        </div>
+        <div class="alert alert-success" role="alert" *ngIf="aviso">Pedido Realizado, en breve le serviremos su orden <fa-icon (click)="remove(item)" [icon]="['fas','smile']" size="1x"></fa-icon></div>
+        <div class="alert alert-danger" role="alert" *ngIf="alertNo">Ya realizaste un pedido.</div>
+        <div class="alert alert-danger" role="alert" *ngIf="mensajeMesa">Falta numero de mesa.</div>
+        <div class="alert alert-danger" role="alert" *ngIf="mensajeItems && cantidadTotal == 0">No tienes productos en el pedido.</div>
+        <div class="row text-center" style="margin-top: 20px;">
+            <div class="col-6">
+                <button type="button" class="btn naranja" (click)="cancelPedido(items)">Cancelar</button>
+            </div>
+            <div class="col-6">
+                <button type="button" class="btn verde" (click)="confirmPedido(items)">Confirmar</button>
+            </div>
+        </div>
+    </div>
+    <!--end shopping-cart -->
+</div>

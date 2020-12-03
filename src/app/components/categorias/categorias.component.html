@@ -1,0 +1,12 @@
+<div class="row" style="margin:20px 0" *ngFor="let categoria of categorias">
+    <div class="col">
+        <a [routerLink]="[categoria.id_categoria]">
+            <div class="card borde-redondo" style="width:100%">
+                <img src="assets/images/categorias/{{categoria.nombre | lowercase }}.png" class="card-img-top borde-redondo" alt="{{categoria.nombre}}" style="height:100%">
+                <div class="titulo d-flex align-items-center justify-content-center">
+                    <h4 class="text-center">{{categoria.nombre}}</h4>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>

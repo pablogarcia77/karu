@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg">
+    <span class="navbar-brand versalita negrita text-white">Usuario: {{usuario[0].username}}</span>
+    <button class="tog" type="button">
+        <fa-icon [icon]="['fas','user']" [styles]="{'stroke': 'white', 'color': 'white'}" (click)="openOptions()"></fa-icon>
+    </button>
+</nav>
+<div class="panelUsuario" *ngIf="opciones">
+    <form method="post">
+        <div class="login">
+            <div class="tituloIngreso">
+                <h5 class="negrita versalita">Panel de Usuario</h5>
+            </div>
+            <div style="margin-top: 20px;">
+                <div class="navbar-nav">
+                    <p [routerLink]="[{ outlets: { panel: ['perfil']}}]" (click)="openOptions()">Mi Perfil</p>
+                    <p [routerLink]="[{ outlets: { panel: null}}]" (click)="openOptions()">Mis Comercios</p>
+                    <p (click)="logOut()">Salir</p>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="container">
+    <router-outlet name="panel"></router-outlet>
+</div>
+<!-- <app-micomercios></app-micomercios> -->

@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-sm-auto col-md-6 col-lg-4" *ngFor="let pedido of pedidos">
+        <div class="card text-white bg-secondary mt-3">
+            <div class="card-header"><h5>Mesa: {{pedido.mesa}}</h5></div>
+            <div class="card-body">
+                <div *ngFor="let detalle of detalles; index as i">
+                    <div class="row" *ngIf="pedido.id_pedido == detalle.id_pedido">
+                        <div class="col col-sm-auto">
+                            <h6 class="card-title">{{detalle.nombre}} x {{detalle.cantidad}}</h6>
+                        </div>
+                        <div class="col">
+                            <p class="card-text text-right text-success">${{detalle.subtotal}},00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col col-sm-10 col-md-6">
+                        <h5>Total</h5>
+                    </div>
+                    <div class="col col-sm-10 col-md-6 text-right">
+                        <h5 class="text-success">${{pedido.total}},00</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

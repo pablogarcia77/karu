@@ -1,0 +1,35 @@
+.categoria{
+    color: #e08826;
+    font-size: 1.8em;
+    font-weight: bold;
+    font-family: Trocchi;
+    -webkit-user-select: none;
+}
+.productos{
+    font-family: 'Libre Baskerville';
+    color: white;
+    /* background-color: yellow; */
+    display: inline-flex;
+}
+.oferta{
+    margin-left: -20px;
+    animation: latidos 1s infinite;
+    width: 20px;
+}
+
+.nombreProducto{
+    -webkit-user-select: none;
+}
+.precioProducto{
+    color: #63A9B1;
+}
+.descripcion{
+    font-size: 0.67rem;
+    -webkit-user-select: none;
+}
+.linea{
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #292525;
+    z-index: 30;
+}
